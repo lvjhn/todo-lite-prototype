@@ -1,0 +1,32 @@
+body {
+    font-family: arial;
+    margin: 0px; 
+    padding: 0px;
+}
+
+.warning {
+    color: rgb(233, 69, 69);
+    font-weight: bold;
+
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+    padding-left: 20px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+   
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
