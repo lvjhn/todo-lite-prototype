@@ -1,5 +1,5 @@
 <script>
-    import { onClient } from "../helpers/on-client";
+    import { onClient } from "@/helpers/on-client";
     import List from "./List.svelte";
     import { dndzone } from "svelte-dnd-action";
     import { flip } from 'svelte/animate';

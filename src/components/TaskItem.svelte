@@ -84,7 +84,7 @@
     <div class="description">
         {#if !isEditingTask}
             <div class="task-description-label" class:is-done={task.isDone}> 
-                {task.description} {index}
+                {task.description} 
             </div>
         {:else} 
             <div class="edit-task-description"> 
