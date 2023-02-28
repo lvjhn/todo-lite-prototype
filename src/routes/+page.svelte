@@ -6,7 +6,6 @@
     import Lists from '../components/Lists.svelte';
     import { Button } from '@svelteuidev/core'
 
-    let loaded = false; 
 
     let root;
 
@@ -15,10 +14,6 @@
     let lists;
 
     $: activeListId && (async () => await updateActiveList())(); 
-
-    onMount(() => {
-        loaded = true;
-    })
 
     async function updateActiveList() {
         if(lists) 
@@ -69,48 +64,40 @@
 </script> 
 
 <div class="home">  
-    {#if loaded}    
-        <div class="sidebar"> 
-            <div class="app-title">
-                <h1>Todo-Lite</h1>
-            </div>
-            <div class="lists">
-                <Lists 
-                    bind:targetListId={activeListId}
-                    on:change-list={changeList} 
-                    on:delete-list={handleDeletedList}
-                />
-                <div align="center">
-                    <Button on:click={clearData}>
-                        CLEAR DATA
-                    </Button>
-                </div>
-            </div> 
+    <div class="sidebar"> 
+        <div class="app-title">
+            <h1>Todo-Lite</h1>
         </div>
-        {#if activeList}
-            <div class="main-panel">
-                <div class="task-list-title"> 
-                    <h3>{activeList.name}</h3> 
-                </div> 
-                <div class="task-list-content">
-                    <TaskList 
-                        bind:targetListId={activeListId} 
-                    />
-                </div>
+        <div class="lists">
+            <Lists 
+                bind:targetListId={activeListId}
+                on:change-list={changeList} 
+                on:delete-list={handleDeletedList}
+            />
+            <div align="center">
+                <Button on:click={clearData}>
+                    CLEAR DATA
+                </Button>
             </div>
-        {:else} 
-            <div class="main-panel no-list-selected">
-                <div class="content">
-                    Please select a list first to continue... 
-                </div>
-            </div>
-        {/if}
-    {:else} 
-        <div class="loading"> 
-            <div class="loading-text"> 
-                Loading app...
-            </div> 
         </div> 
+    </div>
+    {#if activeList}
+        <div class="main-panel">
+            <div class="task-list-title"> 
+                <h3>{activeList.name}</h3> 
+            </div> 
+            <div class="task-list-content">
+                <TaskList 
+                    bind:targetListId={activeListId} 
+                />
+            </div>
+        </div>
+    {:else} 
+        <div class="main-panel no-list-selected">
+            <div class="content">
+                Please select a list first to continue... 
+            </div>
+        </div>
     {/if}
 </div>
 
